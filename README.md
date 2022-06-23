@@ -12,7 +12,7 @@ Code quality
 - api log (看情況)
 
 4. style-component  
-   4.1 add a custom pages/\_document.js (if you don't have one)  
+   4.1 add a custom page `_document.js` (if you don't have one)  
    4.2 yarn add -D babel-plugin-styled-components  
    4.3 add .babelrc  
    4.4 better-debugging: https://styled-components.com/docs/tooling#better-debugging
@@ -27,3 +27,6 @@ Code quality
 7. api response 200: 有資料
    api response 200: 無資料
    api response 非 200: 跳出 error notification
+
+8. lodash.debounce
+   8.1 npm web search lodash.debounce 可以看到 jdalton published

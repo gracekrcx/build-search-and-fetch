@@ -12,9 +12,12 @@ export const useStore = () => {
 
 const StoreContextProvider = ({ children }) => {
   // const [state, dispatch] = useReducer(keywordReducer, initialState)
-  const [repositories, setRepositories] = useState([])
+  const [repositories, setRepositories] = useState(null)
+  const [loading, setLoading] = useState(false)
   return (
-    <StoreContext.Provider value={{ repositories, setRepositories }}>
+    <StoreContext.Provider
+      value={{ repositories, setRepositories, loading, setLoading }}
+    >
       {children}
     </StoreContext.Provider>
   )
