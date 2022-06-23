@@ -14,6 +14,7 @@ const RepoItemContainer = styled.div`
 
   .title {
     font-size: 18px;
+    overflow-wrap: break-word;
     color: ${(props) => props.theme.colors.primary};
   }
 
@@ -21,6 +22,7 @@ const RepoItemContainer = styled.div`
     font-size: 14px;
     color: #57606a;
     margin-top: 4px;
+    overflow-wrap: break-word;
   }
 
   .groupTags {

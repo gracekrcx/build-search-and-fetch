@@ -20,13 +20,12 @@ export default async function handler(req, res) {
       }
       return res.json()
     })
-    .catch((e) => {
-      console.error('[GitHub API] error', e)
-      return {}
-    })
     .then(normalizer)
+    .catch((e) => {
+      // console.error('api error', e)
+      return e
+    })
 
-  // console.log('---> server api', result)
-
-  res.status(200).json(result)
+  // 200 （1）成功 have data （2）成功 no data
+  res.status(result.status || 200).json(result)
 }

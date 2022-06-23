@@ -1,4 +1,5 @@
 import RepoItem from '../components/RepoItem'
+import ErrorMessage from '../components/ErrorMessage'
 import { StoreContextConsumer } from '../context/store'
 
 export default function Repositories() {
@@ -6,13 +7,16 @@ export default function Repositories() {
     <StoreContextConsumer>
       {({ repositories }) => {
         // console.log('->repositories:', repositories) */
-        return (
-          <>
-            {repositories.map((i) => (
-              <RepoItem item={i} key={i.name} />
-            ))}
-          </>
-        )
+        if (repositories?.length) {
+          return (
+            <>
+              {repositories.map((i) => (
+                <RepoItem item={i} key={i.name} />
+              ))}
+            </>
+          )
+        }
+        return <ErrorMessage />
       }}
     </StoreContextConsumer>
   )

@@ -6,7 +6,7 @@ const SearchWrapper = styled.div`
 `
 
 const Input = styled.input`
-  width: 238.2px;
+  max-width: 238.2px;
   height: 32px;
   padding: 5px 12px;
   background-color: #f6f8fa;

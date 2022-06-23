@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const ToastWrapper = styled.div`
-  width: 350px;
+  max-width: 350px;
   min-height: 75px;
   display: flex;
   align-items: center;
@@ -12,6 +12,7 @@ const ToastWrapper = styled.div`
 
   .message {
     font-size: 15px;
+    padding: 0 20px;
   }
 `
 

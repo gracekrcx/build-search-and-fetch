@@ -6,16 +6,17 @@ export default function getRepositories({ keyword = '', page = 1 }) {
       if (!res.ok) {
         throw res
       }
-      // console.log('response',res)
       return res.json()
     })
-    .then((myJson) => {
-      // console.log(myJson)
-      // dispatch({ type: SET_REPOSITORIES, payload: { list: myJson } })
-      return myJson
+    .then((resJson) => {
+      console.log(resJson)
+      // dispatch({ type: SET_REPOSITORIES, payload: { list: resJson } })
+      return resJson
     })
     .catch((e) => {
-      console.error(' error:', e)
-      return []
+      console.error('client error:', e.status)
+      console.error('client error:', e.statusText)
+      // call error toast notification
+      return null
     })
 }

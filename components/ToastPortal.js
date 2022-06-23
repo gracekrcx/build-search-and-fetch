@@ -11,7 +11,7 @@ const ToastContainer = styled.div`
   cursor: pointer;
 `
 
-const ToastPortal = ({ autoClose, autoCloseTime = 4000 }, ref) => {
+const ToastPortal = ({ autoClose, autoCloseTime = 5000 }, ref) => {
   const [toasts, setToasts] = useState([])
   const { loaded, portalId } = useToastPortal()
 

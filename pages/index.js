@@ -14,29 +14,29 @@ export default function Home() {
   const toastRef = useRef()
 
   const fetchRepositories = async () => {
-    const result = await getRepositories({ keyword: 'TypeScript' })
-    setRepositories(result)
+    const result = await getRepositories({ keyword: 'react' })
+    if (Array.isArray(result)) {
+      setRepositories(result)
+    } else {
+      addToast()
+      setRepositories([])
+    }
   }
 
   const addToast = useCallback(() => {
     const mockToast = {
       mode: 'error',
-      message: new Date().getSeconds(),
+      message: '查詢功能出現問題，請稍候再試～',
     }
     toastRef.current.addMessage(mockToast)
   }, [])
-
-  useEffect(() => {
-    fetchRepositories()
-    // addToast()
-  }, [addToast])
 
   return (
     <>
       <Head></Head>
       <Container>
         <Search />
-        <button onClick={addToast}>click</button>
+        {/* <button onClick={addToast}>click</button> */}
         <Repositories />
         <ToastPortal ref={toastRef} autoClose />
       </Container>
