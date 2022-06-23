@@ -23,3 +23,7 @@ Code quality
 
 6. 文字區塊斷行
    [如何用 CSS 強制文字換行: word-break, word-wrap, overflow-wrap](https://shubo.io/word-wrap-vs-word-break/)
+
+7. api response 200: 有資料
+   api response 200: 無資料
+   api response 非 200: 跳出 error notification
