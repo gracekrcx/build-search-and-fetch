@@ -31,8 +31,8 @@ Code quality
 8. lodash.debounce
    8.1 npm web search lodash.debounce 可以看到 jdalton published
 
-9. infinite scrolling : new IntersectionObserver
-   9.1 使用 callback ref 取得 DOM [How can I measure a DOM node?](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)
-   9.2 io.observe(element);
-   9.3 io.unobserve(element);
-   9.4 io.disconnect();
+9. infinite scrolling : new IntersectionObserver  
+   9.1 使用 callback ref 取得 DOM [How can I measure a DOM node?](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)  
+   9.2 io.observe(element);  
+   9.3 io.unobserve(element);  
+   9.4 io.disconnect();  
