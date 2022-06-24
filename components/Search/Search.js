@@ -2,14 +2,11 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import debounce from 'lodash/debounce'
 import { SearchWrapper, Input, Button } from './styled'
 import { useStore } from '../../context/store'
-import getRepositories from '../../clientFetch/getRepositories'
-import ToastPortal from '../../components/ToastPortal'
-import useCountRenders from '../../hooks/useCountRenders'
+// import useCountRenders from '../../hooks/useCountRenders'
 
 export default function Search() {
   const [keyword, setKeyword] = useState('')
-  const { setRepositories, setLoading } = useStore()
-  const toastRef = useRef()
+  const { fetchRepositories } = useStore()
   const debounceTime = 800
 
   // useCountRenders()
@@ -23,7 +20,8 @@ export default function Search() {
   // (3) debouncedSearch
   const debouncedSearch = useCallback(
     debounce((searchKeyword) => {
-      fetchRepositories(searchKeyword)
+      // (4) call github api
+      fetchRepositories(searchKeyword, 0)
     }, debounceTime),
     []
   )
@@ -34,28 +32,6 @@ export default function Search() {
       debouncedSearch(keyword)
     }
   }, [keyword, debouncedSearch])
-
-  // (4) call github api
-  const fetchRepositories = async (keyword) => {
-    setLoading(true)
-    const result = await getRepositories({ keyword })
-    if (Array.isArray(result)) {
-      setRepositories(result)
-    } else {
-      addToast()
-      setRepositories([])
-    }
-    setLoading(false)
-  }
-
-  // (error handler)
-  const addToast = useCallback(() => {
-    const mockToast = {
-      mode: 'error',
-      message: '查詢功能出現問題，請稍候再試～',
-    }
-    toastRef.current.addMessage(mockToast)
-  }, [])
 
   // const handleSearch = () => {
   //   console.log('----- button')
@@ -72,8 +48,6 @@ export default function Search() {
       {/* <Button onClick={handleSearch} disabled={loading}>
         Search
       </Button> */}
-      {/* <button onClick={addToast}>click</button> */}
-      <ToastPortal ref={toastRef} autoClose />
     </SearchWrapper>
   )
 }

@@ -1,5 +1,7 @@
+import { useCallback, useRef } from 'react'
 import styled from 'styled-components'
 import Tag from '../components/Tag'
+import { useStore } from '../context/store'
 
 const RepoItemContainer = styled.div`
   background-color: #fff;
@@ -42,10 +44,42 @@ const RepoItemContainer = styled.div`
   }
 `
 
-export default function RepoItem({ item }) {
+export default function RepoItem({ item, lastElement = false }) {
   const titleArr = item.name.split('/')
+  const { fetchRepositories } = useStore()
+
+  const observer = useRef(null)
+  // react 文件：How can I measure a DOM node?
+  const lastElementRef = useCallback(
+    (node) => {
+      // console.log('---> get DOM', node)
+      if (observer.current) observer.current.disconnect()
+
+      observer.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // console.log("entry", entry);
+            if (entry.isIntersecting) {
+              // console.log('交叉')
+              // 只在目標元素進入 viewport 時執行這裡的工作
+              fetchRepositories()
+            } else {
+              console.log('from intersecting to not-intersecting.')
+            }
+          })
+        },
+        {
+          // rootMargin: '100px',
+        }
+      )
+
+      if (node) observer.current.observe(node)
+    },
+    [fetchRepositories]
+  )
+
   return (
-    <RepoItemContainer>
+    <RepoItemContainer ref={lastElement ? lastElementRef : null}>
       <div className="title">
         {titleArr[0]}/<b>{titleArr[1]}</b>
       </div>

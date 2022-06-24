@@ -9,26 +9,38 @@ import Spinner from '../components/Spinner'
 // empty array
 
 export default function Repositories() {
+  const renderRepositories = (repositories, searchData, loading) => {
+    if (repositories?.length) {
+      return (
+        <>
+          {repositories.map((i, index) => (
+            <RepoItem
+              item={i}
+              key={i.name}
+              lastElement={index + 1 === repositories.length}
+            />
+          ))}
+        </>
+      )
+    }
+    if (repositories?.length === 0 && searchData.keyword === '') {
+      return null
+    }
+    if (loading) {
+      return null
+    }
+    return <ErrorMessage />
+  }
+
   return (
     <StoreContextConsumer>
-      {({ repositories, loading }) => {
-        // console.log('->repositories:', repositories)
-        if (loading) {
-          return <Spinner />
-        }
-        if (/Null/.test(Object.prototype.toString.call(repositories))) {
-          return null
-        }
-        if (repositories?.length) {
-          return (
-            <>
-              {repositories.map((i) => (
-                <RepoItem item={i} key={i.name} />
-              ))}
-            </>
-          )
-        }
-        return <ErrorMessage />
+      {({ repositories, loading, searchData }) => {
+        return (
+          <>
+            <div>{renderRepositories(repositories, searchData, loading)}</div>
+            {loading && <Spinner />}
+          </>
+        )
       }}
     </StoreContextConsumer>
   )

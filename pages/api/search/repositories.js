@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const { keyword, page } = req.query
 
   const result = await fetch(
-    `https://api.github.com/search/repositories?q=${keyword}&page=${page}`,
+    `https://api.github.com/search/repositories?q=${keyword}&page=${page}&per_page=25`,
     {
       headers: {
         Accept: 'application/vnd.github.mercy-preview+json',
