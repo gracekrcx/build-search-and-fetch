@@ -1,11 +1,12 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import debounce from 'lodash/debounce'
-import { SearchWrapper, Input, Button } from './styled'
+import { SearchWrapper, Input } from './styled'
 import { useStore } from '../../context/store'
 // import useCountRenders from '../../hooks/useCountRenders'
 import { useRouter } from 'next/router'
-import searchIcon from '../../cache/images/searchIcon.jpeg'
+// import searchIcon from '../../cache/images/searchIcon.jpeg'
+import searchIcon from '../../images/encoding/searchIcon'
 
 export default function Search() {
   const [keyword, setKeyword] = useState('')
@@ -52,7 +53,7 @@ export default function Search() {
   const debouncedSearch = useCallback(
     debounce((searchKeyword) => {
       // (4) call github api
-      // fetchRepositories(searchKeyword, 0)
+      fetchRepositories(searchKeyword, 0)
       router.push({
         query: { q: searchKeyword },
       })
@@ -73,7 +74,10 @@ export default function Search() {
 
   return (
     <SearchWrapper>
-      <Image src={searchIcon} alt="icon" width={320} height={200} />
+      {/* <Image src={searchIcon} alt="icon" width={320} height={200} /> */}
+
+      <img src={searchIcon} alt="icon" style={{ width: '80%' }} />
+
       <Input
         type="text"
         placeholder="Find a repository…"
