@@ -37,15 +37,18 @@ Code quality
 6. lodash.debounce  
    6.1 npm web search lodash.debounce 可以看到 jdalton published
 
-7. infinite scrolling : new IntersectionObserver  
-   7.1 使用 callback ref 取得 DOM [How can I measure a DOM node?](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)  
-   7.2 io.observe(element);  
-   7.3 io.unobserve(element);  
-   7.4 io.disconnect();
+7. react-portal  
+   [trendmicro-frontend/react-portal](https://github.com/trendmicro-frontend/react-portal)  
 
-8. useReducer  
-   8.1 context multiple reducers 是符合 context 的設計嗎？  
-   8.2 WHY no combineReducers  
-   8.3 以 redux 的架構，combineReducer 是官方提供的 method，但 combine multiple reducers in React Hooks 合適嗎
+8. infinite scrolling : new IntersectionObserver  
+   8.1 使用 callback ref 取得 DOM [How can I measure a DOM node?](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)  
+   8.2 io.observe(element);  
+   8.3 io.unobserve(element);  
+   8.4 io.disconnect();
+
+9. useReducer  
+   9.1 context multiple reducers 是符合 context 的設計嗎？  
+   9.2 WHY no combineReducers  
+   9.3 以 redux 的架構，combineReducer 是官方提供的 method，但 combine multiple reducers in React Hooks 合適嗎
 
 
