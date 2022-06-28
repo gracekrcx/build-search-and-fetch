@@ -28,17 +28,17 @@ Code quality
    4.1 api response 200: 有資料 api response data stored in global  
    4.2 api response 200: 無資料  
    4.3 api response 非 200: 跳出 error notification  
-   4.4 loading start => api => loading end  
+   4.4 loading start => api => loading end
 
 5. 呼叫 useContext 的 component 總是會在 context 值更新時重新 render。如果重新 render component 的操作很昂貴，你可以透過 memoization 來最佳化。(官方文件)（如何證實舉個例子實現這句話，也是蠻有趣的）  
    5.1. createContext: creat a box 裝 state  
-   5.2. useContext: 如果要拿 box 裡的 state  
+   5.2. useContext: 如果要拿 box 裡的 state
 
 6. lodash.debounce  
    6.1 npm web search lodash.debounce 可以看到 jdalton published
 
 7. react-portal  
-   [trendmicro-frontend/react-portal](https://github.com/trendmicro-frontend/react-portal)  
+   [trendmicro-frontend/react-portal](https://github.com/trendmicro-frontend/react-portal)
 
 8. infinite scrolling : new IntersectionObserver  
    8.1 使用 callback ref 取得 DOM [How can I measure a DOM node?](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)  
@@ -50,5 +50,3 @@ Code quality
    9.1 context multiple reducers 是符合 context 的設計嗎？  
    9.2 WHY no combineReducers  
    9.3 以 redux 的架構，combineReducer 是官方提供的 method，但 combine multiple reducers in React Hooks 合適嗎
-
-

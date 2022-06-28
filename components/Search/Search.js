@@ -22,6 +22,10 @@ export default function Search() {
     }
 
     const handleRouteChange = (url, { shallow }) => {
+      // shallow 代表:
+      // Update the path of the current page 『without』 rerunning 重跑
+      // getStaticProps, getServerSideProps or getInitialProps. Defaults to false
+
       // console.log(
       //   `App is changing to ${url} ${
       //     shallow ? 'with' : 'without'
@@ -29,7 +33,9 @@ export default function Search() {
       // )
 
       const searchKeyword = url.replace('/?q=', '').trim()
-      setKeyword(searchKeyword)
+      if (shallow) {
+        setKeyword(searchKeyword)
+      }
     }
 
     router.events.on('routeChangeError', handleRouteChangeError)
