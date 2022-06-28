@@ -21,6 +21,8 @@ export default function Search() {
       }
     }
 
+    console.log('11--trigger---', router.events)
+
     const handleRouteChange = (url, { shallow }) => {
       // shallow 代表:
       // Update the path of the current page 『without』 rerunning 重跑
