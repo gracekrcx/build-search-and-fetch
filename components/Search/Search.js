@@ -21,9 +21,7 @@ export default function Search() {
       }
     }
 
-    console.log('11--trigger---', router.events)
-
-    const handleRouteChange = (url, { shallow }) => {
+    const handleRouteComplete = (url, { shallow }) => {
       // shallow 代表:
       // Update the path of the current page 『without』 rerunning 重跑
       // getStaticProps, getServerSideProps or getInitialProps. Defaults to false
@@ -33,7 +31,7 @@ export default function Search() {
       //     shallow ? 'with' : 'without'
       //   } shallow routing`
       // )
-      console.log('//---> shallow', shallow)
+      console.log('//---> Complete - shallow', shallow)
 
       const searchKeyword = url.replace('/?q=', '').trim()
       if (shallow) {
@@ -42,13 +40,13 @@ export default function Search() {
     }
 
     router.events.on('routeChangeError', handleRouteChangeError)
-    router.events.on('routeChangeStart', handleRouteChange)
+    router.events.on('routeChangeComplete', handleRouteComplete)
 
     // If the component is unmounted, unsubscribe
     // from the event with the `off` method:
     return () => {
       router.events.off('routeChangeError', handleRouteChangeError)
-      router.events.off('routeChangeStart', handleRouteChange)
+      router.events.off('routeChangeComplete', handleRouteComplete)
     }
   }, [router.events])
 
