@@ -31,6 +31,7 @@ export default function Search() {
       //     shallow ? 'with' : 'without'
       //   } shallow routing`
       // )
+      console.log('//---> shallow', shallow)
 
       const searchKeyword = url.replace('/?q=', '').trim()
       if (shallow) {
@@ -51,7 +52,7 @@ export default function Search() {
 
   // (1) input change
   const handleChange = (e) => {
-    const value = e.target.value.trim()
+    const value = e.target.value
     setKeyword(value)
   }
 
